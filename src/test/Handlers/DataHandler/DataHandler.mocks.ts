@@ -1,5 +1,3 @@
-import { ParsedUrlQuery } from "querystring";
-import { UrlWithParsedQuery } from "url";
 import { AccessRight } from "../../../app/Models/ServerModels";
 import { WorkingPosition } from "../../../app/Models/UserModels";
 
