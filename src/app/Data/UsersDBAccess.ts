@@ -10,7 +10,7 @@ export class UsersDBAccess {
         this.nedb.loadDatabase();
     }
 
-    public async putUser(user: User) {
+    public async putUser(user: User): Promise<void> {
         return new Promise((resolve, reject) => {
             this.nedb.insert(user, (err: Error | null) => {
                 if (err) {
