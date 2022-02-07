@@ -8,14 +8,15 @@ export class Authorizer implements TokenGenerator, TokenValidator {
     private sessionTokenDBAccess: SessionTokenDBAccess;
     private userCredentialsDBAccess: UserCredentialsDbAccess;
 
-    public constructor(sessionTokenDBAccess = new SessionTokenDBAccess,
+    public constructor(
+        sessionTokenDBAccess = new SessionTokenDBAccess,
         userCredentialsDBAccess = new UserCredentialsDbAccess
     ) {
         this.sessionTokenDBAccess = sessionTokenDBAccess;
         this.userCredentialsDBAccess = userCredentialsDBAccess;
     }
 
-    async generateToken(account: Account): Promise<SessionToken | null> {
+    public async generateToken(account: Account): Promise<SessionToken | null> {
         const resultAccount = await this.userCredentialsDBAccess.getUserCredential(
             account.username, account.password
         )
