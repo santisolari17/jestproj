@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "ts-node src/app/Launcher.ts",
+    "test": "jest",
+    "test:e2e": "jest --config jest.config.itest.ts"
   },
   "author": "",
   "license": "ISC",
