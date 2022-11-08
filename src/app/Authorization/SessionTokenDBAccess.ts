@@ -45,7 +45,7 @@ export class SessionTokenDBAccess {
 					reject(err)
 				} else {
 					if (numRemoved === 0) {
-						reject(new Error(`Session token not deleted`))
+						reject(new Error(`SessionToken not deleted!`))
 					} else {
 						resolve();
 					}

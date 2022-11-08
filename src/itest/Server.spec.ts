@@ -1,7 +1,7 @@
-import * as axios from 'axios';
+const axios = require('axios').default;
 
 // Avoid axios throw error while validating statuses
-axios.default.defaults.validateStatus = () => true;
+axios.defaults.validateStatus = () => true;
 
 const serverUrl = 'http://localhost:8080';
 
@@ -14,7 +14,7 @@ describe('Server integration tests suite', () => {
 
 async function serverReachable(): Promise<boolean> {
   try {
-    await axios.default.get(serverUrl);
+    await axios.get(serverUrl);
   } catch (error) {
     console.log('Server not reachable');
     return false;
