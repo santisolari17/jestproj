@@ -1,4 +1,3 @@
-// const axios = require('axios').default;
 import axios from 'axios';
 import { UserCredentialsDbAccess } from '../app/Authorization/UserCredentialsDbAccess';
 import { HTTP_CODES, SessionToken, UserCredentials } from '../app/Models/ServerModels';
@@ -44,10 +43,18 @@ describe('Server integration tests suite', () => {
   });
 
   test('query data', async () => {
-    const response = await axios.get(serverUrl + '/users?name=some', {
+    const response = await axios.get(serverUrl + `/users?name=${itestUserCredentials.username}`, {
       headers: { Authorization: sessionToken.tokenId }
     });
 
     expect(response.status).toBe(HTTP_CODES.OK);
+  });
+
+  test('query data with invalid token shoud be unauthorized', async () => {
+    const response = await axios.get(serverUrl + '/users?name=some', {
+      headers: { Authorization: 'someInvalidSessionToken' }
+    });
+
+    expect(response.status).toBe(HTTP_CODES.UNAUTHORIZED);
   });
 });
