@@ -51,7 +51,7 @@ describe('LoginHandler test suite', () => {
 
     await loginHandler.handleRequest();
 
-    expect(thisMock.response.statusCode).toBe(HTTP_CODES.NOT_fOUND);
+    expect(thisMock.response.statusCode).toBe(HTTP_CODES.NOT_FOUND);
     expect(thisMock.response.write).toHaveBeenCalledWith('wrong username or password');
   })
 
